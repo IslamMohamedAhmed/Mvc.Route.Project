@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mvc.Route.Dal\Mvc.Route.Dal.csproj" />
+  </ItemGroup>
+
 </Project>

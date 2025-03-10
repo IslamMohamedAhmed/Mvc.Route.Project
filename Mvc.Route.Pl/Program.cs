@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Mvc.Route.Bll.Interfaces;
+using Mvc.Route.Bll.Repositories;
+using Mvc.Route.Dal.Data.Contexts;
+
 namespace Mvc.Route.Pl
 {
     public class Program
@@ -8,7 +13,11 @@ namespace Mvc.Route.Pl
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
