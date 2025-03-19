@@ -14,6 +14,8 @@ namespace Mvc.Route.Dal.Data.Configurations
         public void Configure(EntityTypeBuilder<Department> builder)
         {
             builder.Property(p => p.Id).UseIdentityColumn(7, 7);
+            builder.HasMany(p => p.Employees).WithOne(o=>o.WorkFor).HasForeignKey(o => o.DepartmentId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

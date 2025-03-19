@@ -9,40 +9,12 @@ using Mvc.Route.Dal.Models;
 
 namespace Mvc.Route.Bll.Repositories
 {
-    public class DepartmentRepository : IDepartmentRepository
+    public class DepartmentRepository : GenericRepository<Department>, IDepartmentRepository
     {
-        private readonly AppDbContext appDbContext;
+        
 
-        public DepartmentRepository(AppDbContext appDbContext)
-        {
-            this.appDbContext = appDbContext;
-        }
-        public int Add(Department department)
-        {
-            appDbContext.Departments.Add(department);
-            return  appDbContext.SaveChanges();
-        }
-
-        public int Delete(Department department)
-        {
-            appDbContext.Departments.Remove(department);
-            return appDbContext.SaveChanges();
-        }
-
-        public IEnumerable<Department> GetAll()
-        {
-            return appDbContext.Departments.ToList();
-        }
-
-        public Department GetById(int? id)
-        {
-            return appDbContext.Departments.Find(id);
-        }
-
-        public int Update(Department department)
-        {
-            appDbContext.Departments.Update(department);
-            return appDbContext.SaveChanges();
-        }
+        public DepartmentRepository(AppDbContext appDbContext) : base(appDbContext) { }
+        
+        
     }
 }

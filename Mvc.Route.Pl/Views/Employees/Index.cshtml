@@ -1,0 +1,144 @@
+﻿@model IEnumerable<EmployeeViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Employees</h1>
+<br />
+<br />
+<form asp-action="Index" class="my-5">
+    <div class="row">
+        <div class="col-8">
+            <input type="text" name="searchValue" class="form-control" placeholder="Search Employees" />
+        </div>
+        <div class="col-4">
+            <input type="submit" name="name" value="Search" class="btn btn-success" />
+
+        </div>
+    </div>
+
+</form>
+@if (TempData["CreateEmployee"] is not null)
+{
+    <div class="alert alert-success MessageDiv">@TempData["CreateEmployee"]</div>
+}
+@if (TempData["EditEmployee"] is not null)
+{
+    <div class="alert alert-warning MessageDiv">@TempData["EditEmployee"]</div>
+}
+@if (TempData["DeleteEmployee"] is not null)
+{
+    <div class="alert alert-danger MessageDiv">@TempData["DeleteEmployee"]</div>
+}
+<br />
+<br />
+<a class="btn btn-success" asp-action="Create">
+    <i class="fa-solid fa-plus"></i>
+    Add
+</a>
+
+
+<br />
+<br />
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(f=>f.Image)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(f => f.Name)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(f => f.Age)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(f => f.Address)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(f => f.Salary)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(f => f.Email)
+                </td>
+                     <td>
+                    @Html.DisplayNameFor(f => f.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(f => f.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(f => f.HiringDate)
+                </td>
+             
+                <td>
+                    @Html.DisplayNameFor(f => f.WorkFor)
+                </td>
+                <td>
+                    Details
+                </td>
+                <td>
+                    Update
+                </td>
+                <td>
+                    Delete
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var emp in Model)
+            {
+                <tr>
+                   <td>
+                        @if (emp.ImageName is null)
+                        {
+                            <i class="fa-solid fa-xmark text-danger"></i>
+                        }
+                        else{
+                            <img width="50" height="50" src="~/Files/Images/@emp.ImageName"/>
+                        }
+                   </td>
+                    <td>@emp.Name</td>
+                    <td>@emp.Age</td>
+                    <td>@emp.Address</td>
+                    <td>@emp.Salary</td>
+                    <td>@emp.Email</td>
+                    <td>@emp.PhoneNumber</td>
+                    <td>
+                    @if(emp.IsActive){
+                       <i class="text-success fa-solid fa-check"></i> 
+                    }
+                    else{
+
+                       <i class="text-danger fa-solid fa-xmark"></i> 
+                    }
+                    </td>
+                    <td>@emp.HiringDate</td>
+                    
+                    <td>
+                        @if(emp.WorkFor is null){
+                            <i class="text-danger fa-solid fa-xmark"></i>
+                        }
+                        else{
+                            @emp.WorkFor.Name;
+                        }
+                    </td>
+                    <partial name="DetailsEditDeleteButtonsPartialView" model="@emp.Id"></partial>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        No Employees Available
+
+    </div>
+}
+

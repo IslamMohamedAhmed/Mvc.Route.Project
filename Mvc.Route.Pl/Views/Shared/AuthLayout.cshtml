@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Accounts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- Custom Theme files -->
+	<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- //Custom Theme files -->
+	<!-- web font -->
+	<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+	<!-- //web font -->
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg bg-transparent">
+		<div class="container">
+			<a class="navbar-brand" href="#">Account</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" asp-controller="Account" asp-action="Login">Link</a>
+					</li>
+			</div>
+		</div>
+	</nav>
+
+	<div>
+		@RenderBody()
+	</div>
+	<!-- main -->
+	
+	<!-- //main -->
+</body>
+</html>
+
+
+
+
+

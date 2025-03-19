@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Department>
+﻿@model IEnumerable<DepartmentViewModel>
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,8 +7,24 @@
 <br/>
 <br/>
 
+
+@if (TempData["CreateDepartment"] is not null)
+{
+    <div class="alert alert-success MessageDiv">@TempData["CreateDepartment"]</div>
+}
+@if (TempData["EditDepartment"] is not null)
+{
+    <div class="alert alert-warning MessageDiv">@TempData["EditDepartment"]</div>
+}
+@if (TempData["DeleteDepartment"] is not null)
+{
+    <div class="alert alert-danger MessageDiv">@TempData["DeleteDepartment"]</div>
+}
+<br />
+<br />
 <a class="btn btn-success" asp-action="Create"><i class="fa-solid fa-plus"></i>
     Add</a>
+
 
 <br />
 <br />
@@ -44,24 +60,7 @@
                     <td>@depa.Code</td>
                     <td>@depa.Name</td>
                     <td>@depa.DateOfCreation</td>
-                    <td>
-                        <a class="btn btn-info" asp-action="Details">
-                            <i class="fa-solid fa-eye"></i>
-                            Details
-                        </a>
-                    </td>
-                    <td>
-                        <a class="btn btn-warning" asp-action="Update">
-                            <i class="fa-solid fa-code-pen"></i>
-                            Update
-                        </a>
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" asp-action="Delete">
-                            <i class="fa-solid fa-trash"></i>
-                            Delete
-                        </a>
-                    </td>
+                    <partial name="DetailsEditDeleteButtonsPartialView" model="@depa.Id"></partial>
 
 
                 </tr>

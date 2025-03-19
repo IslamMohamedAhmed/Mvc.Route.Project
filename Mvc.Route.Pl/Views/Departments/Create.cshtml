@@ -1,4 +1,4 @@
-﻿@model Department
+﻿@model DepartmentViewModel
 @{
 	ViewData["Title"] = "Create";
 }
@@ -7,30 +7,7 @@
 <br />
 <br />
 <form asp-action="Create">
-	<div class="form-group">
-		<label asp-for="Code"></label>
-		<input asp-for="Code" class="form-control" />
-		<br />
-		<span class="text-danger" asp-validation-for="Code"></span>
-	</div>
-	<br />
-	<div class="form-group">
-		<label asp-for="Name"></label>
-		<input asp-for="Name" class="form-control"/>
-		<br />
-
-		<span class="text-danger" asp-validation-for="Name"></span>
-	</div>
-	<br />
-
-	<div class="form-group">
-		<label asp-for="DateOfCreation"></label>
-		<input asp-for="DateOfCreation" class="form-control" />
-		<br />
-
-		<span class="text-danger" asp-validation-for="DateOfCreation"></span>
-	</div>
-	<br />
+	<partial name="DepartmentPartialViews/DepartmentEditAddPartialView" model="@Model"></partial>
 
 	<input class="btn btn-success" type="submit"/>
     <a asp-action="Index" class="btn btn-dark">Back to List</a>
@@ -38,3 +15,8 @@
 </form>
 
 
+
+@section jQueryValidation{
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
