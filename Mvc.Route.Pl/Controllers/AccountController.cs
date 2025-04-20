@@ -183,8 +183,12 @@ namespace Mvc.Route.Pl.Controllers
             }
             ModelState.AddModelError(string.Empty, "Invalid operation");
             return View(model);
-        } 
-
+        }
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
 
     }
 }

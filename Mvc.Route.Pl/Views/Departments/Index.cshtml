@@ -22,7 +22,8 @@
 }
 <br />
 <br />
-<a class="btn btn-success" asp-action="Create"><i class="fa-solid fa-plus"></i>
+<a class="btn btnStyl btn-outline-success" asp-action="Create">
+    <i class="fa-solid fa-plus"></i>
     Add</a>
 
 
@@ -60,7 +61,7 @@
                     <td>@depa.Code</td>
                     <td>@depa.Name</td>
                     <td>@depa.DateOfCreation</td>
-                    <partial name="DetailsEditDeleteButtonsPartialView" model="@depa.Id"></partial>
+                    <partial name="DetailsEditDeleteButtonsPartialView" model="@depa.Id.ToString()"></partial>
 
 
                 </tr>

@@ -1,0 +1,23 @@
+﻿@model RoleViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Role</h1>
+
+
+<br />
+<br />
+<form asp-action="Create" enctype="multipart/form-data">
+
+	<partial name="RolePartialViews/RoleEditAddPartialView" model="@Model"></partial>
+
+
+	<input class="btn btnStyl btn-outline-success" type="submit" value="Add" />
+	<a asp-action="Index" class="btn btnStyl btn-outline-dark">Back to List</a>
+
+</form>
+
+
+

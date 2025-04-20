@@ -1,0 +1,25 @@
+﻿@model UserViewModel
+@{
+    ViewData["Title"] = "Update";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Update user</h1>
+
+
+<br />
+<br />
+<form asp-action="Update" enctype="multipart/form-data">
+
+	<partial name="UserPartialViews/UserEditAddPartialView" model="@Model"></partial>
+
+	
+	<input class="btn btn-warning" type="submit" value="Save" />
+	<a asp-action="Index" class="btn btn-dark">Back to List</a>
+
+</form>
+
+@section jQueryValidation {
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,17 +1,20 @@
-﻿@model DepartmentViewModel
+﻿@model RoleViewModel
 @{
     ViewData["Title"] = "Delete";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Department Delete</h1>
-
+<h1>Delete role</h1>
 <br />
 <br />
-
 <form asp-action="Delete">
-	<partial name="DepartmentPartialViews/DepartmentDeleteDetailsView" model="@Model"></partial>
+
+	<partial name="RolePartialViews/RoleDeleteDetailsPartialView" model="@Model"></partial>
+	
 
 	<input class="btn btnStyl btn-outline-danger" type="submit" value="Confirm" />
 	<a asp-action="Index" class="btn btnStyl btn-outline-dark">Unconfirm</a>
+
 </form>
+
 

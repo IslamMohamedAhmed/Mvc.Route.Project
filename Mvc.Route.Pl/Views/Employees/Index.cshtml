@@ -12,7 +12,7 @@
             <input type="text" name="searchValue" class="form-control" placeholder="Search Employees" />
         </div>
         <div class="col-4">
-            <input type="submit" name="name" value="Search" class="btn btn-success" />
+            <input type="submit" name="name" value="Search" class="btn btnStyl btn-outline-success" />
 
         </div>
     </div>
@@ -32,7 +32,7 @@
 }
 <br />
 <br />
-<a class="btn btn-success" asp-action="Create">
+<a class="btn btnStyl btn-outline-success" asp-action="Create">
     <i class="fa-solid fa-plus"></i>
     Add
 </a>
@@ -126,7 +126,7 @@
                             @emp.WorkFor.Name;
                         }
                     </td>
-                    <partial name="DetailsEditDeleteButtonsPartialView" model="@emp.Id"></partial>
+                    <partial name="DetailsEditDeleteButtonsPartialView" model="@emp.Id.ToString()"></partial>
 
                 </tr>
 

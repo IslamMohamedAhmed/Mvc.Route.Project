@@ -3,14 +3,14 @@
 	ViewData["Title"] = "Create";
 }
 
-<h1>Create New Department</h1>
+<h1 >Create New Department</h1>
 <br />
 <br />
 <form asp-action="Create">
 	<partial name="DepartmentPartialViews/DepartmentEditAddPartialView" model="@Model"></partial>
 
-	<input class="btn btn-success" type="submit"/>
-    <a asp-action="Index" class="btn btn-dark">Back to List</a>
+	<input class="btn btnStyl btn-outline-success" type="submit" />
+	<a asp-action="Index" class="btn btnStyl btn-outline-dark">Back to List</a>
 
 </form>
 

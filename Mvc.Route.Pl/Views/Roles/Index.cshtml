@@ -1,0 +1,95 @@
+﻿@model IEnumerable<RoleViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h1>All Roles</h1>
+<br />
+<br />
+<form asp-action="Index" class="my-5">
+    <div class="row">
+        <div class="col-8">
+            <input type="text" name="searchValue" class="form-control" placeholder="Search Role" />
+        </div>
+        <div class="col-4">
+            <input type="submit" name="name" value="Search" class="btn btnStyl btn-outline-success" />
+
+        </div>
+    </div>
+
+</form>
+<br />
+<br />
+<a class="btn btnStyl btn-outline-success" asp-action="Create">
+    <i class="fa-solid fa-plus"></i>
+    Add
+</a>
+
+@if (TempData["EditRole"] is not null)
+{
+    <div class="alert alert-warning MessageDiv">@TempData["EditRole"]</div>
+}
+@if (TempData["CreateRole"] is not null)
+{
+    <div class="alert alert-success MessageDiv">@TempData["CreateRole"]</div>
+}
+@if (TempData["DeleteRole"] is not null)
+{
+    <div class="alert alert-danger MessageDiv">@TempData["DeleteRole"]</div>
+}
+<br />
+<br />
+
+
+
+<br />
+<br />
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(f=>f.Id)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(f => f.RoleName)
+                </td>
+             
+                <td>
+                    Details
+                </td>
+                <td>
+                    Update
+                </td>
+                <td>
+                    Delete
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                 
+                    <td>@role.Id</td>
+                    <td>@role.RoleName</td>
+                    <partial name="DetailsEditDeleteButtonsPartialView" model="@role.Id"></partial>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        No Roles Available
+
+    </div>
+}
+
